@@ -2,24 +2,25 @@
 
 **SolidWorks · Mechanical design · Additive manufacturing · Mechatronics integration**
 
-I designed and iterated a lightweight, 3D-printable electronics enclosure for an exoskeleton's distributed-control system. The package brings together an IMU, a Teensy microcontroller, and CAN communication hardware while addressing motion-capture interference, cable strain, service access, and multiple exoskeleton mounting interfaces.
+I designed and validated two lightweight, 3D-printable electronics-packaging implementations for an exoskeleton's distributed-control system: an original Teensy-based IMU/CAN package and a final compact QT Py + IMU package. Both address motion-capture interference, cable strain, service access, and exoskeleton mounting constraints.
 
 ## Project at a glance
 
 | | |
 | --- | --- |
 | **My focus** | Mechanical packaging, CAD iteration, and design-for-printing |
-| **Hardware** | Adafruit ICM-20948 IMU, Teensy microcontroller, and 5708 CAN Pal |
+| **Hardware** | Adafruit ICM-20948 IMU, Teensy microcontroller, QT Py SAMD21, and 5708 CAN Pal |
 | **Key constraints** | Low mass, fast printing, IR light shielding, connector protection, and simple service access |
 | **Mechanical interfaces** | V2 and V2.5 exoskeleton mounting patterns |
-| **Status** | Complete and fully validated for its intended exoskeleton use |
-| **Deliverables** | Five CAD generations, lid prototypes, final SolidWorks assembly, requirements, and completed validation record |
+| **Status** | Both packaging implementations are complete and fully validated |
+| **Deliverables** | Original five-generation CAD history, two compact-package versions, final SolidWorks assemblies, specifications, and completed validation records |
 
 ## My contribution
 
 - Translated an advisor brief and electrical-system needs into mechanical packaging requirements.
 - Developed the enclosure through multiple SolidWorks iterations rather than treating the first concept as a finished design.
 - Designed around board support, connector access, cable routing, minimum wall thickness, and component clearances.
+- Implemented the compact QT Py architecture to reduce package size while preserving the original engineering requirements.
 - Addressed how indicator LEDs could be hidden from infrared motion-capture cameras while remaining accessible during debugging.
 - Addressed strain relief so cable-yank loads transfer into the housing instead of board-mounted connectors.
 - Defined and completed the physical validation needed before releasing the enclosure for use on the exoskeleton.
@@ -30,12 +31,15 @@ The work was collaborative: another team member focused on inter-device communic
 
 ```mermaid
 flowchart LR
-    Motion["Limb motion"] --> IMU
-    subgraph Package["3D-printed electronics package"]
-        IMU["ICM-20948 IMU"] --> MCU["Teensy microcontroller"]
-        MCU --> CAN["CAN interface"]
+    Motion["Limb motion"] --> IMU["ICM-20948 IMU"]
+    subgraph Packages["Validated packaging implementations"]
+        Original["Original: Teensy + CAN interface"]
+        Compact["Final compact: QT Py + IMU package"]
     end
-    CAN --> Network["Distributed exoskeleton network"]
+    IMU --> Original
+    IMU --> Compact
+    Original --> Network["Distributed exoskeleton network"]
+    Compact --> Network
 ```
 
 ## Engineering challenge
@@ -49,7 +53,9 @@ flowchart LR
 | Print quickly at low mass | The package is worn on a moving exoskeleton | Thin but controlled walls, compact geometry, and support-conscious design |
 | Constrain electronics safely | Boards cannot move, short, or carry enclosure loads through components | Standoffs, positive board capture, and component clearance checks |
 
-## Design evolution
+## Packaging implementations and design evolution
+
+### Original Teensy-based package
 
 | Iteration | Focus |
 | --- | --- |
@@ -60,11 +66,18 @@ flowchart LR
 | **Final** | Consolidated cover, snapping lid, CAN interface, IMU, and microcontroller assembly |
 | **Lid tests** | Focused snap-fit and service-access experiments |
 
-This progression preserves the design history and shows how the enclosure developed as integration constraints became clearer.
+### Final compact QT Py package
+
+| Iteration | Focus |
+| --- | --- |
+| **Version 1** | Initial compact QT Py, IMU, enclosure, and clamp assembly |
+| **Version 2** | Refined final enclosure and fully validated compact assembly |
+
+The compact QT Py implementation was selected because it reduced the overall package size while retaining the original mechanical and motion-capture requirements.
 
 ## Completion and validation
 
-**Status: complete and fully validated.** The final package passed the validation required for its intended exoskeleton configuration. Validation covered:
+**Status: both implementations are complete and fully validated.** The original Teensy-based package and the final compact QT Py package passed the validation required for their intended exoskeleton configurations. Validation covered:
 
 - V2 and V2.5 mounting compatibility;
 - board, connector, cable, and service-access fit;
@@ -73,18 +86,18 @@ This progression preserves the design history and shows how the enclosure develo
 - status-light shielding for motion capture and deliberate debug access;
 - printability and repeated-use durability.
 
-The repository preserves the validated final design together with the earlier CAD iterations that led to it.
+The repository preserves both validated packages together with the CAD iterations that led to their final designs.
 
 ## Explore the work
 
-- Start with the [`Final` CAD package](Original%20CAN%20Communication%20Setup/CAD/Final), which includes the original source ZIP and extracted SolidWorks files.
-- Read the [`IMU Packaging Notes and Specifications`](Original%20CAN%20Communication%20Setup/Notes%20and%20Specifications/IMU%20Packaging%20Notes%20and%20Specifications.md) for historical requirements, dimensions, design decisions, and the completed validation checklist.
-- Review the [`CAD design history`](Original%20CAN%20Communication%20Setup/CAD) to see the earlier iterations and lid tests.
+- Start with the [`Final Compact CAN Communications Packaging`](Final%20CAN%20Communications%20Packaging) for the implemented QT Py + IMU architecture and its two CAD versions.
+- Read the [`QT Py IMU Packaging Specifications`](Final%20CAN%20Communications%20Packaging/Notes%20and%20Specifications/QT%20Py%20IMU%20Packaging%20Specifications.md) for its compact architecture, inherited requirements, and completed validation.
+- Review the [`Original CAN Communication Setup`](Original%20CAN%20Communication%20Setup) for the completed Teensy-based implementation and its full CAD design history.
 
 <details>
 <summary>Source-folder mapping</summary>
 
-The original Drive folders used overlapping design numbers, so the repository folders are normalized chronologically while the SolidWorks filenames remain unchanged:
+The original Teensy-package Drive folders used overlapping design numbers, so the repository folders are normalized chronologically while the SolidWorks filenames remain unchanged:
 
 | Repository folder | Original Drive folder |
 | --- | --- |

@@ -25,12 +25,9 @@ These values are historical planning inputs from the original project notes. The
 | Item | Source information |
 | --- | --- |
 | IMU | 25.7 mm × 17.7 mm × 4.6 mm |
-| Microcontroller | 60.96 mm × 4.64 mm × 17.84 mm; units assumed to be millimeters from context |
+| Teensy microcontroller | 60.96 mm × 4.64 mm × 17.84 mm; units assumed to be millimeters from context |
 | IMU board | Adafruit ICM-20948 STEMMA QT |
 | CAN interface | 5708 CAN Pal appears in the later CAD |
-| STEMMA connector | JST-SH, 1 mm pitch, 4-pin female |
-| STEMMA cable candidates | 50 mm Adafruit cable or approximately 30 mm cable |
-| USB cable | Anker cable; the final opening and bend clearance were validated with the intended configuration |
 
 ## Requirements carried forward from the original notes
 
@@ -38,10 +35,6 @@ These values are historical planning inputs from the original project notes. The
 - Add a positive feature that clamps or captures the Teensy rather than relying only on cable friction.
 - Elevate the Teensy from the enclosure floor with standoffs or an equivalent support feature.
 - Lengthen the enclosure or reposition the CAN retention features so the lid does not clamp onto the CAN hardware.
-- For the stacked QT-Py-style arrangement, allow the boards to stack while routing three interfaces toward the front.
-- Size the USB opening from a physical connector. The original note suggests starting from a Micro-USB-width opening with roughly 3 mm additional height, but this is a preliminary rule and not a released dimension.
-- Allow side clearance for wire routing instead of matching the bare board width exactly.
-- Preserve the existing enclosure height where possible when the IMU is omitted; with the IMU installed, account for the current IMU-and-lid height plus the CAN connector stack.
 
 ## Design principles evaluated
 
@@ -92,7 +85,4 @@ The completed design and validation cycle resolved the following areas for the i
 
 ## Source references
 
-- [Adafruit ICM-20948 product page](https://www.adafruit.com/product/4600)
-- [50 mm STEMMA QT cable](https://www.adafruit.com/product/4399)
-- [JST SHR-04V-S-B connector](https://www.mouser.com/ProductDetail/JST-Commercial/SHR-04V-S-B)
 - [OpenIMU MiniLogger top-cover reference](https://github.com/introlab/OpenIMU-MiniLogger/blob/master/Hardware/Solidworks/Top%20Cover.STL)
