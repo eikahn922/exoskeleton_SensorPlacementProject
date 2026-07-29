@@ -2,7 +2,7 @@
 
 ## Project brief
 
-Derrick is setting up the inter-device communications used for distributed computing on the exoskeleton. This work covers the complementary hardware side: electronics packaging for the IMU and associated communication hardware.
+A collaborator is setting up the inter-device communications used for distributed computing on the exoskeleton. This work covers the complementary hardware side: electronics packaging for the IMU and associated communication hardware.
 
 The IMU setup requires a dedicated enclosure. Depending on the most efficient motor architecture, the motor setup may also need a bolt-on housing for its microprocessor.
 
@@ -91,8 +91,6 @@ Do not release a housing for printing until both interfaces are represented by c
 
 ## Source references
 
-- [Original Google Drive folder](https://drive.google.com/drive/folders/1nMWX1Bnhz1K5swczDewSktDDHzUA8sah)
-- [Original IMU packaging notes](https://docs.google.com/document/d/1aDHx2ar5PCmIxBS6NhGsG6PfV4dJ1cSjSBkWCsbp4uY/edit)
 - [Adafruit ICM-20948 product page](https://www.adafruit.com/product/4600)
 - [50 mm STEMMA QT cable](https://www.adafruit.com/product/4399)
 - [JST SHR-04V-S-B connector](https://www.mouser.com/ProductDetail/JST-Commercial/SHR-04V-S-B)

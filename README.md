@@ -1,15 +1,87 @@
-# Exoskeleton Sensor Placement and IMU Packaging
+# Exoskeleton IMU and CAN Electronics Packaging
 
-This repository preserves the original CAD development history and engineering notes for the exoskeleton's IMU and distributed-CAN electronics packaging.
+**SolidWorks · Mechanical design · Additive manufacturing · Mechatronics integration**
 
-## Repository contents
+I designed and iterated a lightweight, 3D-printable electronics enclosure for an exoskeleton's distributed-control system. The package brings together an IMU, a Teensy microcontroller, and CAN communication hardware while addressing motion-capture interference, cable strain, service access, and multiple exoskeleton mounting interfaces.
 
-- [`Original CAN Communication Setup/CAD`](Original%20CAN%20Communication%20Setup/CAD) contains the SolidWorks files, the final source archive, and lid-test models.
-- [`Original CAN Communication Setup/Notes and Specifications`](Original%20CAN%20Communication%20Setup/Notes%20and%20Specifications) contains the advisor brief, packaging requirements, design recommendations, open questions, and validation checklist.
+## Project at a glance
 
-## Design-generation mapping
+| | |
+| --- | --- |
+| **My focus** | Mechanical packaging, CAD iteration, and design-for-printing |
+| **Hardware** | Adafruit ICM-20948 IMU, Teensy microcontroller, and 5708 CAN Pal |
+| **Key constraints** | Low mass, fast printing, IR light shielding, connector protection, and simple service access |
+| **Mechanical interfaces** | V2 and V2.5 exoskeleton mounting patterns |
+| **Deliverables** | Five CAD generations, lid prototypes, final SolidWorks assembly, requirements, and validation plan |
 
-The Google Drive source used an overlapping numbering scheme. The folders in this repository are normalized chronologically:
+## My contribution
+
+- Translated an advisor brief and electrical-system needs into mechanical packaging requirements.
+- Developed the enclosure through multiple SolidWorks iterations rather than treating the first concept as a finished design.
+- Designed around board support, connector access, cable routing, minimum wall thickness, and component clearances.
+- Considered how indicator LEDs could be hidden from infrared motion-capture cameras while remaining accessible during debugging.
+- Planned strain relief so cable-yank loads transfer into the housing instead of board-mounted connectors.
+- Defined the physical tests needed before releasing the enclosure for use on the exoskeleton.
+
+The work was collaborative: another team member focused on inter-device communications for distributed computing, while my focus was the physical packaging and hardware integration around that system.
+
+## System context
+
+```mermaid
+flowchart LR
+    Motion["Limb motion"] --> IMU
+    subgraph Package["3D-printed electronics package"]
+        IMU["ICM-20948 IMU"] --> MCU["Teensy microcontroller"]
+        MCU --> CAN["CAN interface"]
+    end
+    CAN --> Network["Distributed exoskeleton network"]
+```
+
+## Engineering challenge
+
+| Requirement | Why it matters | Design direction |
+| --- | --- | --- |
+| Block status lights | Infrared cameras may detect exposed indicators during motion capture | Opaque enclosure with deliberate debug-light access |
+| Protect connectors | A yanked cable can damage a board-mounted connector | Housing-level cable capture and strain-relief features |
+| Preserve service access | Hardware must be connected and inspected without removing the full system | Accessible cable exits and serviceable lid concepts |
+| Support two exoskeleton versions | V2 and V2.5 use different IMU mounting interfaces | Common enclosure with mounting variants or interchangeable plates |
+| Print quickly at low mass | The package is worn on a moving exoskeleton | Thin but controlled walls, compact geometry, and support-conscious design |
+| Constrain electronics safely | Boards cannot move, short, or carry enclosure loads through components | Standoffs, positive board capture, and component clearance checks |
+
+## Design evolution
+
+| Iteration | Focus |
+| --- | --- |
+| **Design 1** | Baseline housing, hinged-lid exploration, and electronics packaging assembly |
+| **Design 2** | Revised housing geometry and updated assembly packaging |
+| **Design 3** | Further cover and lid refinement |
+| **Design 4** | CAN Pal integration and a more complete communication-hardware stack |
+| **Final** | Consolidated cover, snapping lid, CAN interface, IMU, and microcontroller assembly |
+| **Lid tests** | Focused snap-fit and service-access experiments |
+
+This progression preserves the design history and shows how the enclosure developed as integration constraints became clearer.
+
+## Current status and validation
+
+The final CAD package is archived and ready for physical fit checks. Before treating it as production-ready, I would complete the following validation:
+
+- verify the V2 and V2.5 bolt patterns against controlled CAD or physical gauges;
+- measure the actual USB and STEMMA cable overmolds and bend radii;
+- perform cable-yank testing to confirm the enclosure takes the load before the connector;
+- confirm component and lid clearances on a printed assembly;
+- test whether the closed enclosure hides status lights from the motion-capture cameras;
+- record print orientation, material, mass, support usage, print time, and service-cycle durability.
+
+## Explore the work
+
+- Start with the [`Final` CAD package](Original%20CAN%20Communication%20Setup/CAD/Final), which includes the original source ZIP and extracted SolidWorks files.
+- Read the [`IMU Packaging Notes and Specifications`](Original%20CAN%20Communication%20Setup/Notes%20and%20Specifications/IMU%20Packaging%20Notes%20and%20Specifications.md) for requirements, dimensions, recommendations, open questions, and the complete validation checklist.
+- Review the [`CAD design history`](Original%20CAN%20Communication%20Setup/CAD) to see the earlier iterations and lid tests.
+
+<details>
+<summary>Source-folder mapping</summary>
+
+The original Drive folders used overlapping design numbers, so the repository folders are normalized chronologically while the SolidWorks filenames remain unchanged:
 
 | Repository folder | Original Drive folder |
 | --- | --- |
@@ -20,8 +92,6 @@ The Google Drive source used an overlapping numbering scheme. The folders in thi
 | Final | FINAL DESIGN |
 | Lid Tests | Lid Test 1 |
 
-The source filenames are intentionally preserved inside each generation so the SolidWorks assembly references remain as recoverable as possible.
+The initial archive is limited to material from the original IMU-packaging project folder and its child folders.
 
-## Source scope
-
-Only material from the Google Drive folder [`imu packaging (#1)`](https://drive.google.com/drive/folders/1nMWX1Bnhz1K5swczDewSktDDHzUA8sah) and its child folders is included in this initial archive.
+</details>
