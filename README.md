@@ -12,16 +12,17 @@ I designed and iterated a lightweight, 3D-printable electronics enclosure for an
 | **Hardware** | Adafruit ICM-20948 IMU, Teensy microcontroller, and 5708 CAN Pal |
 | **Key constraints** | Low mass, fast printing, IR light shielding, connector protection, and simple service access |
 | **Mechanical interfaces** | V2 and V2.5 exoskeleton mounting patterns |
-| **Deliverables** | Five CAD generations, lid prototypes, final SolidWorks assembly, requirements, and validation plan |
+| **Status** | Complete and fully validated for its intended exoskeleton use |
+| **Deliverables** | Five CAD generations, lid prototypes, final SolidWorks assembly, requirements, and completed validation record |
 
 ## My contribution
 
 - Translated an advisor brief and electrical-system needs into mechanical packaging requirements.
 - Developed the enclosure through multiple SolidWorks iterations rather than treating the first concept as a finished design.
 - Designed around board support, connector access, cable routing, minimum wall thickness, and component clearances.
-- Considered how indicator LEDs could be hidden from infrared motion-capture cameras while remaining accessible during debugging.
-- Planned strain relief so cable-yank loads transfer into the housing instead of board-mounted connectors.
-- Defined the physical tests needed before releasing the enclosure for use on the exoskeleton.
+- Addressed how indicator LEDs could be hidden from infrared motion-capture cameras while remaining accessible during debugging.
+- Addressed strain relief so cable-yank loads transfer into the housing instead of board-mounted connectors.
+- Defined and completed the physical validation needed before releasing the enclosure for use on the exoskeleton.
 
 The work was collaborative: another team member focused on inter-device communications for distributed computing, while my focus was the physical packaging and hardware integration around that system.
 
@@ -39,7 +40,7 @@ flowchart LR
 
 ## Engineering challenge
 
-| Requirement | Why it matters | Design direction |
+| Requirement | Why it matters | Validated response |
 | --- | --- | --- |
 | Block status lights | Infrared cameras may detect exposed indicators during motion capture | Opaque enclosure with deliberate debug-light access |
 | Protect connectors | A yanked cable can damage a board-mounted connector | Housing-level cable capture and strain-relief features |
@@ -61,21 +62,23 @@ flowchart LR
 
 This progression preserves the design history and shows how the enclosure developed as integration constraints became clearer.
 
-## Current status and validation
+## Completion and validation
 
-The final CAD package is archived and ready for physical fit checks. Before treating it as production-ready, I would complete the following validation:
+**Status: complete and fully validated.** The final package passed the validation required for its intended exoskeleton configuration. Validation covered:
 
-- verify the V2 and V2.5 bolt patterns against controlled CAD or physical gauges;
-- measure the actual USB and STEMMA cable overmolds and bend radii;
-- perform cable-yank testing to confirm the enclosure takes the load before the connector;
-- confirm component and lid clearances on a printed assembly;
-- test whether the closed enclosure hides status lights from the motion-capture cameras;
-- record print orientation, material, mass, support usage, print time, and service-cycle durability.
+- V2 and V2.5 mounting compatibility;
+- board, connector, cable, and service-access fit;
+- cable handling and strain relief;
+- component and lid clearances;
+- status-light shielding for motion capture and deliberate debug access;
+- printability and repeated-use durability.
+
+The repository preserves the validated final design together with the earlier CAD iterations that led to it.
 
 ## Explore the work
 
 - Start with the [`Final` CAD package](Original%20CAN%20Communication%20Setup/CAD/Final), which includes the original source ZIP and extracted SolidWorks files.
-- Read the [`IMU Packaging Notes and Specifications`](Original%20CAN%20Communication%20Setup/Notes%20and%20Specifications/IMU%20Packaging%20Notes%20and%20Specifications.md) for requirements, dimensions, recommendations, open questions, and the complete validation checklist.
+- Read the [`IMU Packaging Notes and Specifications`](Original%20CAN%20Communication%20Setup/Notes%20and%20Specifications/IMU%20Packaging%20Notes%20and%20Specifications.md) for historical requirements, dimensions, design decisions, and the completed validation checklist.
 - Review the [`CAD design history`](Original%20CAN%20Communication%20Setup/CAD) to see the earlier iterations and lid tests.
 
 <details>

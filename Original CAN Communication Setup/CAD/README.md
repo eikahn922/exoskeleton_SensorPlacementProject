@@ -16,4 +16,4 @@ The design folders follow chronological development order, not the overlapping n
 - SolidWorks part and assembly filenames are preserved from the source.
 - Assemblies may depend on relative references. If SolidWorks reports missing components, relink them to the matching part in the same design folder rather than substituting a part from another generation.
 - The final ZIP is retained unchanged under `Final/Source Archive`; its contents are also available under `Final/Extracted CAD`.
-- Treat earlier generations as design history. Confirm the intended production baseline before manufacturing.
+- Treat earlier generations as design history; `Final` is the completed and validated baseline for the intended project configuration.
