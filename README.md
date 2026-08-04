@@ -1,103 +1,142 @@
-# Exoskeleton IMU and CAN Electronics Packaging
+# Repeatable IMU Placement and Distributed Electronics for a Hip-Knee Exoskeleton
 
-**SolidWorks · Mechanical design · Additive manufacturing · Mechatronics integration**
+**SolidWorks · Sensor placement · Mechanical design · Additive manufacturing · Mechatronics integration**
 
-I designed and validated two lightweight, 3D-printable electronics-packaging implementations for an exoskeleton's distributed-control system: an original Teensy-based IMU/CAN package and a final compact QT Py + IMU package. Both address motion-capture interference, cable strain, service access, and exoskeleton mounting constraints.
+I designed an adjustable IMU mounting system and its supporting electronics packages for a hip-knee exoskeleton. The primary engineering goal is to place each IMU at a comparable position and initial sensor-frame orientation across people with different body geometries.
+
+More repeatable placement should reduce setup-dependent variation in gait data, improve consistency in the data used to train control and estimation algorithms, and support better transfer of learned models from one participant to another. This is the design motivation; the magnitude of the algorithmic benefit remains an experimental question.
+
+The supporting distributed-computing hardware places electronics closer to the sensing and actuation locations. Its practical system-level purpose is to reduce long cable runs and wiring-bundle complexity across the exoskeleton.
 
 ## Project at a glance
 
 | | |
 | --- | --- |
-| **My focus** | Mechanical packaging, CAD iteration, and design-for-printing |
-| **Hardware** | Adafruit ICM-20948 IMU, Teensy microcontroller, QT Py SAMD21, and 5708 CAN Pal |
-| **Key constraints** | Low mass, fast printing, IR light shielding, connector protection, and simple service access |
-| **Mechanical interfaces** | V2 and V2.5 exoskeleton mounting patterns |
-| **Status** | Both packaging implementations are complete and fully validated |
-| **Deliverables** | Original five-generation CAD history, two compact-package versions, final SolidWorks assemblies, specifications, and completed validation records |
+| **Primary objective** | Repeatable IMU position and initial orientation across participants |
+| **Current mechanical focus** | Static and adjustable pelvis IMU mounts for a hip-knee exoskeleton |
+| **Data objective** | Reduce placement-induced variation in gait measurements |
+| **Algorithm objective** | Support more consistent training data and improved person-to-person model transfer |
+| **Distributed-system objective** | Place computing near devices to reduce long cable runs and simplify routing |
+| **Supporting hardware** | ICM-20948 IMU, Teensy, QT Py SAMD21, CAN Pal, and exoskeleton mounting hardware |
+| **CAD tools** | SolidWorks assemblies and parts organized around one obvious entry assembly per design |
+| **Status** | Two electronics packages are complete and fully validated; the final pelvis CAD iteration is complete, with static-versus-adjustable comparison testing still planned |
+
+## Why repeatable sensor placement matters
+
+An IMU measures motion in its own coordinate frame. If that frame starts at a different orientation or at a substantially different relative position for each participant, the resulting gait signals can contain variation caused by setup rather than movement.
+
+The adjustable mount is intended to:
+
+- align the sensor at a comparable location using the exoskeleton and pelvis mounting structure as references;
+- establish a repeatable initial sensor-frame orientation;
+- keep the sensor rigidly fixed relative to the exoskeleton during gait;
+- accommodate differences in participant geometry without improvising a new mounting location;
+- make cross-participant datasets easier to compare.
+
+The sensor does not remain globally pointed in one direction throughout gait—the exoskeleton moves. The design goal is a consistent starting alignment and a fixed relationship between the IMU and the structure carrying it.
 
 ## My contribution
 
-- Translated an advisor brief and electrical-system needs into mechanical packaging requirements.
-- Developed the enclosure through multiple SolidWorks iterations rather than treating the first concept as a finished design.
-- Designed around board support, connector access, cable routing, minimum wall thickness, and component clearances.
-- Implemented the compact QT Py architecture to reduce package size while preserving the original engineering requirements.
-- Addressed how indicator LEDs could be hidden from infrared motion-capture cameras while remaining accessible during debugging.
-- Addressed strain relief so cable-yank loads transfer into the housing instead of board-mounted connectors.
-- Defined and completed the physical validation needed before releasing the enclosure for use on the exoskeleton.
-
-The work was collaborative: another team member focused on inter-device communications for distributed computing, while my focus was the physical packaging and hardware integration around that system.
+- Developed a static pelvis mounting reference and four adjustable-mount CAD iterations.
+- Added controlled translation along the pelvis mounting structure while maintaining sensor support and orientation.
+- Preserved both static and adjustable configurations so the value of pelvis translation can be tested rather than assumed.
+- Integrated the compact QT Py and IMU package into the adjustable-mount assemblies.
+- Designed two lightweight electronics-packaging architectures for the distributed communication system.
+- Addressed connector access, cable strain relief, status-light shielding for motion capture, printability, assembly, and service access.
+- Reorganized the CAD so each design exposes one clearly labeled top-level assembly and keeps nested assemblies and parts in an adjacent component folder.
 
 ## System context
 
-```mermaid
+~~~mermaid
 flowchart LR
-    Motion["Limb motion"] --> IMU["ICM-20948 IMU"]
-    subgraph Packages["Validated packaging implementations"]
-        Original["Original: Teensy + CAN interface"]
-        Compact["Final compact: QT Py + IMU package"]
-    end
-    IMU --> Original
-    IMU --> Compact
-    Original --> Network["Distributed exoskeleton network"]
-    Compact --> Network
-```
+    Fit["Participant-specific fitting"] --> Mount["Adjustable pelvis IMU mount"]
+    Mount --> Alignment["Comparable relative position and initial orientation"]
+    Alignment --> Data["More consistent gait data"]
+    Data --> Transfer["Improved cross-person model transfer — design goal"]
 
-## Engineering challenge
+    IMU["IMU"] --> Local["Local controller / communication node"]
+    Local --> Network["Distributed exoskeleton network"]
+    Local --> Wiring["Shorter cable runs and simpler routing"]
+    Package["Protective electronics package"] --> Local
+~~~
 
-| Requirement | Why it matters | Validated response |
+## Primary project: pelvis IMU positioning
+
+The pelvis subsystem retains a fixed reference design and a sequence of adjustable designs. The direction of translation is described as **along the pelvis mounting structure** because the final SolidWorks coordinate-frame convention has not been verified well enough to call it a global Y or Z axis.
+
+| CAD stage | Purpose | Status |
 | --- | --- | --- |
-| Block status lights | Infrared cameras may detect exposed indicators during motion capture | Opaque enclosure with deliberate debug-light access |
-| Protect connectors | A yanked cable can damage a board-mounted connector | Housing-level cable capture and strain-relief features |
-| Preserve service access | Hardware must be connected and inspected without removing the full system | Accessible cable exits and serviceable lid concepts |
-| Support two exoskeleton versions | V2 and V2.5 use different IMU mounting interfaces | Common enclosure with mounting variants or interchangeable plates |
-| Print quickly at low mass | The package is worn on a moving exoskeleton | Thin but controlled walls, compact geometry, and support-conscious design |
-| Constrain electronics safely | Boards cannot move, short, or carry enclosure loads through components | Standoffs, positive board capture, and component clearance checks |
+| **01 Static Reference** | Fixed back-plate IMU mount used as the comparison baseline | Reference configuration |
+| **02 Adjustable Mount – Iteration 2** | Introduces the sliding mount concept | Design iteration |
+| **03 Adjustable Mount – Iteration 3** | Refines the holder and adjustment hardware | Design iteration |
+| **04 Adjustable Mount – Iteration 4** | Further integrates the adjustment mechanism and system hardware | Design iteration |
+| **05 Final Adjustable Mount** | Final adjustable pelvis-mount CAD iteration | Final CAD baseline |
+| **06 Full Exoskeleton Integration Context** | Shows the electronics package in the larger hip-exoskeleton assembly | Integration context |
 
-## Packaging implementations and design evolution
+Both the static and adjustable versions are intentionally preserved. Testing will determine whether translation at the pelvis materially improves placement repeatability enough to justify the added adjustment mechanism.
 
-### Original Teensy-based package
+[Explore the pelvis IMU mounting system](Adjustable%20IMU%20Mounting%20for%20Hip-Knee%20Exoskeleton/Pelvis%20IMU%20Mounting%20System)
 
-| Iteration | Focus |
-| --- | --- |
-| **Design 1** | Baseline housing, hinged-lid exploration, and electronics packaging assembly |
-| **Design 2** | Revised housing geometry and updated assembly packaging |
-| **Design 3** | Further cover and lid refinement |
-| **Design 4** | CAN Pal integration and a more complete communication-hardware stack |
-| **Final** | Consolidated cover, snapping lid, CAN interface, IMU, and microcontroller assembly |
-| **Lid tests** | Focused snap-fit and service-access experiments |
+## Supporting distributed-electronics packaging
 
-### Final compact QT Py package
+The distributed architecture supports the sensor-placement work by locating controller and communication hardware near the devices it serves. The mechanical packages make those local nodes wearable, serviceable, and compatible with motion-capture testing.
 
-| Iteration | Focus |
-| --- | --- |
-| **Version 1** | Initial compact QT Py, IMU, enclosure, and clamp assembly |
-| **Final Version** | Refined, fully validated compact assembly containing 1 QT Py and 1 IMU |
+| Package | Architecture | Status | Start here |
+| --- | --- | --- | --- |
+| **Original CAN communication package** | Teensy, IMU, and CAN interface | Complete and fully validated | [Final/OPEN THIS FIRST](Original%20CAN%20Communication%20Setup/CAD/Final/OPEN%20THIS%20FIRST%20-%20Final%20Validated%20Design) |
+| **Compact CAN communication package** | Exactly 1 QT Py and 1 IMU | Complete and fully validated | [Final Version/OPEN THIS FIRST](Final%20CAN%20Communications%20Packaging/CAD/Final%20Version/OPEN%20THIS%20FIRST%20-%20Compact%20QT%20Py%20Package%20-%20Final) |
 
-The compact QT Py implementation contains one QT Py and one IMU. It was selected because it reduced the overall package size while retaining the original mechanical and motion-capture requirements.
+## Recruiter-friendly CAD navigation
 
-## Completion and validation
+Every design folder follows the same convention:
 
-**Status: both implementations are complete and fully validated.** The original Teensy-based package and the final compact QT Py package passed the validation required for their intended exoskeleton configurations. Validation covered:
+~~~text
+Design or version/
+├── README.md
+└── OPEN THIS FIRST - Clear Design Name/
+    ├── OPEN - Clear Top-Level Assembly Name.SLDASM
+    └── Assembly Components/
+        ├── supporting parts
+        └── nested assemblies, when present
+~~~
 
-- V2 and V2.5 mounting compatibility;
-- board, connector, cable, and service-access fit;
-- cable handling and strain relief;
+Open the assembly beginning with **OPEN -**. Supporting part filenames and nested-assembly filenames are left unchanged to protect their identity across design iterations. Because the files were reorganized for GitHub review, SolidWorks may request a one-time reference relink; select the matching file inside that design's own **Assembly Components** folder.
+
+ZIP archives are not duplicated in the repository. Each archive supplied for the project was integrity-checked and extracted into its corresponding self-contained CAD stage.
+
+## Validation status
+
+### Completed electronics packages
+
+The original Teensy-based package and compact QT Py package are complete and fully validated for their intended exoskeleton configurations. Their checks covered:
+
+- board and connector fit;
+- cable routing and strain relief;
 - component and lid clearances;
-- status-light shielding for motion capture and deliberate debug access;
-- printability and repeated-use durability.
+- status-light shielding for infrared motion capture;
+- deliberate debug access;
+- printability, assembly, service access, and repeated use.
 
-The repository preserves both validated packages together with the CAD iterations that led to their final designs.
+### Pelvis positioning subsystem
 
-## Explore the work
+The final adjustable CAD iteration is complete. Comparative testing remains for the pelvis-specific adjustment question:
 
-- Start with the [`Final Compact CAN Communications Packaging`](Final%20CAN%20Communications%20Packaging) for the implemented QT Py + IMU architecture and its initial and final CAD stages.
-- Read the [`QT Py IMU Packaging Specifications`](Final%20CAN%20Communications%20Packaging/Notes%20and%20Specifications/QT%20Py%20IMU%20Packaging%20Specifications.md) for its compact architecture, inherited requirements, and completed validation.
-- Review the [`Original CAN Communication Setup`](Original%20CAN%20Communication%20Setup) for the completed Teensy-based implementation and its full CAD design history.
+- measure placement repeatability for the static and adjustable mounts across participants;
+- compare initial sensor-frame alignment;
+- verify that the selected adjustment does not slip during gait;
+- determine whether the added translation meaningfully reduces setup variation;
+- evaluate whether the resulting data improves cross-participant algorithm transfer.
+
+## Repository map
+
+- [Adjustable IMU Mounting for Hip-Knee Exoskeleton](Adjustable%20IMU%20Mounting%20for%20Hip-Knee%20Exoskeleton) — primary sensor-placement project and pelvis CAD history.
+- [Final CAN Communications Packaging](Final%20CAN%20Communications%20Packaging) — compact, fully validated one-QT-Py/one-IMU package.
+- [Original CAN Communication Setup](Original%20CAN%20Communication%20Setup) — original, fully validated Teensy-based package and its design history.
 
 <details>
-<summary>Source-folder mapping</summary>
+<summary>Original source-folder mapping</summary>
 
-The original Teensy-package Drive folders used overlapping design numbers, so the repository folders are normalized chronologically while the SolidWorks filenames remain unchanged:
+The original Teensy-package Drive folders used overlapping design numbers, so the repository folders are normalized chronologically while supporting SolidWorks filenames remain unchanged:
 
 | Repository folder | Original Drive folder |
 | --- | --- |
@@ -106,8 +145,8 @@ The original Teensy-package Drive folders used overlapping design numbers, so th
 | Design 3 | Design 2 |
 | Design 4 | Design 3 |
 | Final | FINAL DESIGN |
-| Lid Tests | Lid Test 1 |
+| Experimental – Lid Tests | Lid Test 1 |
 
-The initial archive is limited to material from the original IMU-packaging project folder and its child folders.
+The pelvis source archives map to Static Reference, Adjustable Iterations 2–4, Final Adjustable Mount (ASM #5), and Full Exoskeleton Integration Context.
 
 </details>

@@ -1,34 +1,32 @@
 # Final Compact CAN Communications Packaging
 
-This is the completed, fully validated compact implementation of the exoskeleton's IMU and communications electronics package. It uses an Adafruit QT Py SAMD21 development board with the IMU packaging and was implemented because it provides a smaller package than the earlier Teensy-based architecture.
+This is the completed, fully validated compact implementation of the exoskeleton's IMU and distributed-communications electronics package. The final configuration contains exactly **1 Adafruit QT Py SAMD21 and 1 IMU**.
+
+The QT Py architecture was selected because it reduced package size relative to the earlier Teensy-based enclosure while preserving the mechanical, service, and motion-capture requirements. Locating this hardware near the sensing point also supports the distributed system's practical goal of reducing long cable runs and simplifying wiring across the exoskeleton.
 
 ## Project at a glance
 
 | | |
 | --- | --- |
 | **Status** | Complete and fully validated for its intended exoskeleton configuration |
-| **Controller** | Adafruit QT Py SAMD21 development board |
-| **Sensor** | IMU package represented by the Adafruit and `qtpiBox1_imu` CAD parts |
-| **Final hardware quantity** | 1 QT Py and 1 IMU |
-| **Why this architecture** | Reduced enclosure size while preserving the original packaging requirements |
+| **Controller quantity** | 1 Adafruit QT Py SAMD21 |
+| **Sensor quantity** | 1 IMU |
+| **Why this architecture** | Smaller local electronics package with simpler system wiring |
 | **CAD history** | Version 1 initial compact package; Final Version validated refinement |
-
-The CAD directly models the QT Py, IMU, enclosure components, clamp, and final assembly. It supports the communication-node hardware arrangement without carrying forward the larger Teensy enclosure geometry.
 
 ## Shared engineering requirements
 
-The compact implementation preserved the requirements established for the original package:
-
-- lightweight and quick to 3D print;
-- shield status lights during infrared motion capture while retaining deliberate debug access;
-- make required connectors easy to reach;
-- transfer cable loads into the enclosure rather than board-mounted connectors;
-- constrain electronics without loading surface-mounted components;
-- maintain the validated exoskeleton mounting interface;
-- preserve practical assembly and service access.
+- Remain lightweight and quick to 3D print.
+- Shield status lights during infrared motion capture while retaining deliberate debug access.
+- Keep required connectors accessible.
+- Transfer cable loads into the enclosure rather than board-mounted connectors.
+- Constrain electronics without loading surface-mounted components.
+- Maintain the validated exoskeleton mounting interface.
+- Preserve practical assembly and service access.
 
 ## Explore the work
 
-- [`CAD/Version 1`](CAD/Version%201) contains the initial compact assembly, its original ZIP, and extracted SolidWorks files.
-- [`CAD/Final Version`](CAD/Final%20Version) contains the final validated refinement, its original ZIP, and extracted SolidWorks files.
-- [`QT Py IMU Packaging Specifications`](Notes%20and%20Specifications/QT%20Py%20IMU%20Packaging%20Specifications.md) records the compact architecture, inherited requirements, version-specific constraints, and completed validation.
+- [CAD overview](CAD) explains the two entry assemblies and file structure.
+- [Version 1 – OPEN THIS FIRST](CAD/Version%201/OPEN%20THIS%20FIRST%20-%20Compact%20QT%20Py%20Package%20-%20Version%201) opens the initial compact-package stage.
+- [Final Version – OPEN THIS FIRST](CAD/Final%20Version/OPEN%20THIS%20FIRST%20-%20Compact%20QT%20Py%20Package%20-%20Final) opens the completed, fully validated stage.
+- [QT Py IMU Packaging Specifications](Notes%20and%20Specifications/QT%20Py%20IMU%20Packaging%20Specifications.md) records the architecture, inherited requirements, and completed validation.
