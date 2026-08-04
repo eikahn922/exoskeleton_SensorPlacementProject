@@ -8,9 +8,11 @@
 
 The package integrates:
 
-- an Adafruit QT Py SAMD21 development board with STEMMA QT;
-- the IMU and its dedicated enclosure region;
+- **one** Adafruit QT Py SAMD21 development board with STEMMA QT;
+- **one** IMU and its dedicated enclosure region;
 - the enclosure, clamp, and interface geometry required by the communication-node arrangement.
+
+The final configuration therefore contains exactly **1 QT Py and 1 IMU**.
 
 This architecture was selected and implemented because the QT Py enabled a more compact package than the earlier Teensy-based enclosure while preserving the same mechanical, service, and motion-capture requirements.
 
@@ -25,9 +27,9 @@ This architecture was selected and implemented because the QT Py enabled a more 
 - Constrain boards without pressing on surface-mounted components.
 - Maintain adequate component, lid, wire-routing, and connector clearances.
 
-## Version 2 source requirements
+## Final Version design requirements
 
-The project notes after the `Version 2 (qt pi - setup)` heading apply to this compact implementation:
+The advisor notes defining the compact QT Py setup apply to the Final Version implementation:
 
 - Stack the three functional elements in the compact arrangement and route the three required interfaces toward the front.
 - Size the USB opening for the intended Anker USB cable. The early note proposed a Micro-USB-width opening with approximately 3 mm of additional height; the final validated CAD is authoritative.
@@ -37,14 +39,14 @@ The project notes after the `Version 2 (qt pi - setup)` heading apply to this co
 
 ## Source component dimensions
 
-The source notes list the IMU envelope as **25.7 mm × 17.7 mm × 4.6 mm**. These values were planning inputs; the completed Version 2 CAD and validated physical configuration are authoritative for manufacturing.
+The source notes list the IMU envelope as **25.7 mm × 17.7 mm × 4.6 mm**. These values were planning inputs; the completed Final Version CAD and validated physical configuration are authoritative for manufacturing.
 
 ## CAD version history
 
 | Version | Source archive | Design role |
 | --- | --- | --- |
 | Version 1 | `qtpi#1 (2).zip` | Initial compact QT Py, IMU, enclosure, and clamp assembly |
-| Version 2 | `qtpi#1.zip` | Refined final assembly and final QT Py enclosure geometry |
+| Final Version | `qtpi#1.zip` | Refined final assembly containing 1 QT Py and 1 IMU |
 
 ## Completed validation
 

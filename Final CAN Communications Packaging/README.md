@@ -9,8 +9,9 @@ This is the completed, fully validated compact implementation of the exoskeleton
 | **Status** | Complete and fully validated for its intended exoskeleton configuration |
 | **Controller** | Adafruit QT Py SAMD21 development board |
 | **Sensor** | IMU package represented by the Adafruit and `qtpiBox1_imu` CAD parts |
+| **Final hardware quantity** | 1 QT Py and 1 IMU |
 | **Why this architecture** | Reduced enclosure size while preserving the original packaging requirements |
-| **CAD history** | Version 1 initial compact package; Version 2 final validated refinement |
+| **CAD history** | Version 1 initial compact package; Final Version validated refinement |
 
 The CAD directly models the QT Py, IMU, enclosure components, clamp, and final assembly. It supports the communication-node hardware arrangement without carrying forward the larger Teensy enclosure geometry.
 
@@ -29,5 +30,5 @@ The compact implementation preserved the requirements established for the origin
 ## Explore the work
 
 - [`CAD/Version 1`](CAD/Version%201) contains the initial compact assembly, its original ZIP, and extracted SolidWorks files.
-- [`CAD/Version 2`](CAD/Version%202) contains the final validated refinement, its original ZIP, and extracted SolidWorks files.
+- [`CAD/Final Version`](CAD/Final%20Version) contains the final validated refinement, its original ZIP, and extracted SolidWorks files.
 - [`QT Py IMU Packaging Specifications`](Notes%20and%20Specifications/QT%20Py%20IMU%20Packaging%20Specifications.md) records the compact architecture, inherited requirements, version-specific constraints, and completed validation.
