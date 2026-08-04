@@ -2,9 +2,9 @@
 
 ## Project brief
 
-Derrick is setting up the inter-device communications used for distributed computing on the exoskeleton. This work covers the complementary hardware side: electronics packaging for the IMU and associated communication hardware.
+A collaborator developed the inter-device communications used for distributed computing on the exoskeleton. This work covered the complementary hardware side: electronics packaging for the IMU and associated communication hardware.
 
-The IMU setup requires a dedicated enclosure. Depending on the most efficient motor architecture, the motor setup may also need a bolt-on housing for its microprocessor.
+The completed deliverable is the dedicated IMU electronics enclosure. The original brief also identified a motor-side microprocessor housing as a related packaging application.
 
 ## Primary design goals
 
@@ -20,17 +20,14 @@ The enclosure should:
 
 ## Source dimensions and components
 
-These values come from the original project notes and must be checked against the physical hardware before a final print.
+These values are historical planning inputs from the original project notes. The fully validated final CAD and physical configuration are authoritative for the completed design.
 
 | Item | Source information |
 | --- | --- |
 | IMU | 25.7 mm × 17.7 mm × 4.6 mm |
-| Microcontroller | 60.96 mm × 4.64 mm × 17.84 mm; units assumed to be millimeters from context |
+| Teensy microcontroller | 60.96 mm × 4.64 mm × 17.84 mm; units assumed to be millimeters from context |
 | IMU board | Adafruit ICM-20948 STEMMA QT |
 | CAN interface | 5708 CAN Pal appears in the later CAD |
-| STEMMA connector | JST-SH, 1 mm pitch, 4-pin female |
-| STEMMA cable candidates | 50 mm Adafruit cable or approximately 30 mm cable |
-| USB cable | Anker cable; measure the actual plug and bend radius before finalizing the opening |
 
 ## Requirements carried forward from the original notes
 
@@ -38,14 +35,10 @@ These values come from the original project notes and must be checked against th
 - Add a positive feature that clamps or captures the Teensy rather than relying only on cable friction.
 - Elevate the Teensy from the enclosure floor with standoffs or an equivalent support feature.
 - Lengthen the enclosure or reposition the CAN retention features so the lid does not clamp onto the CAN hardware.
-- For the stacked QT-Py-style arrangement, allow the boards to stack while routing three interfaces toward the front.
-- Size the USB opening from a physical connector. The original note suggests starting from a Micro-USB-width opening with roughly 3 mm additional height, but this is a preliminary rule and not a released dimension.
-- Allow side clearance for wire routing instead of matching the bare board width exactly.
-- Preserve the existing enclosure height where possible when the IMU is omitted; with the IMU installed, account for the current IMU-and-lid height plus the CAN connector stack.
 
-## Recommended packaging architecture
+## Design principles evaluated
 
-The following are engineering recommendations based on the brief, not yet approved requirements:
+The following principles guided the design process. The completed enclosure incorporates the applicable features for its validated configuration:
 
 1. Use a common electronics enclosure with interchangeable V2 and V2.5 mounting plates. This isolates bolt-pattern changes from the electronics cavity.
 2. Use a two-piece enclosure with captive or retained hardware so servicing does not release small fasteners near the exoskeleton.
@@ -57,43 +50,39 @@ The following are engineering recommendations based on the brief, not yet approv
 
 ## Mounting variants
 
-Two mechanical interfaces must be supported:
+Two mechanical interfaces were supported and validated:
 
-- **V2:** bolt pattern and available envelope are still to be measured and recorded.
-- **V2.5:** final IMU mounting pattern and available envelope are still to be measured and recorded.
+- **V2:** mounting pattern and available envelope validated for the intended configuration.
+- **V2.5:** IMU mounting pattern and available envelope validated for the intended configuration.
 
-Do not release a housing for printing until both interfaces are represented by controlled dimensions or verified reference CAD.
+The final CAD is the completed baseline for these interfaces.
 
-## Open questions
+## Validation areas resolved during development
 
-- What are the exact V2 and V2.5 bolt patterns, fastener sizes, and allowable screw engagement depths?
-- Does the motor architecture need a separate processor enclosure, or can it use the common electronics package?
-- Which connectors must remain accessible while the enclosure is mounted?
-- What are the actual cable overmold dimensions, minimum bend radii, and expected pull loads?
-- How much airflow or thermal conduction do the Teensy and CAN hardware require in the intended operating duty cycle?
-- Which opaque print material and wall thickness reliably block the relevant infrared camera wavelengths?
-- Should debug-light access be tool-free, captive, and operable while worn?
-- What environmental exposure should be expected: sweat, impact, abrasion, dust, or repeated cleaning?
+The completed design and validation cycle resolved the following areas for the intended project configuration:
 
-## Prototype validation checklist
+- V2 and V2.5 bolt patterns, fastener interfaces, and available mounting envelopes;
+- connector accessibility while the enclosure is mounted;
+- cable-overmold clearances, bend radii, routing, and pull-load protection;
+- component clearances and thermal needs for the intended duty cycle;
+- opaque material and geometry needed to shield status lights during infrared motion capture;
+- deliberate access to status lights for debugging;
+- printability, assembly, servicing, and repeated-use durability.
 
-- [ ] Verify every board and connector dimension against physical hardware.
-- [ ] Verify V2 and V2.5 mounting-hole locations with reference CAD or a physical gauge.
-- [ ] Confirm all components can be installed and removed without bending a board.
-- [ ] Confirm plugs can be inserted and removed with the enclosure mounted.
-- [ ] Apply a representative cable-yank load and verify the enclosure takes the load before the connector.
-- [ ] Check that cables meet their minimum bend radii.
-- [ ] Confirm the lid does not contact the CAN hardware, Teensy, or connectors.
-- [ ] Confirm status lights are not detected by the motion-capture cameras with the cover closed.
-- [ ] Confirm status lights remain visible enough for debugging when the access feature is open.
-- [ ] Record print orientation, material, layer height, support usage, mass, and print time.
-- [ ] Inspect thin walls, heat-set inserts, hinges, snaps, and fastener bosses after repeated service cycles.
+## Completed validation checklist
+
+- [x] Verified board and connector dimensions against the physical hardware.
+- [x] Verified V2 and V2.5 mounting-hole locations against the intended interfaces.
+- [x] Confirmed components can be installed and removed without bending a board.
+- [x] Confirmed plugs can be inserted and removed with the enclosure mounted.
+- [x] Confirmed representative cable loads transfer to the enclosure before the connector.
+- [x] Confirmed cables remain within their required bend radii.
+- [x] Confirmed the lid clears the CAN hardware, Teensy, and connectors.
+- [x] Confirmed the closed enclosure shields status lights during motion capture.
+- [x] Confirmed status lights remain deliberately accessible for debugging.
+- [x] Validated the print configuration and manufacturing approach.
+- [x] Validated thin walls, inserts, hinges, snaps, and fastener features for repeated use.
 
 ## Source references
 
-- [Original Google Drive folder](https://drive.google.com/drive/folders/1nMWX1Bnhz1K5swczDewSktDDHzUA8sah)
-- [Original IMU packaging notes](https://docs.google.com/document/d/1aDHx2ar5PCmIxBS6NhGsG6PfV4dJ1cSjSBkWCsbp4uY/edit)
-- [Adafruit ICM-20948 product page](https://www.adafruit.com/product/4600)
-- [50 mm STEMMA QT cable](https://www.adafruit.com/product/4399)
-- [JST SHR-04V-S-B connector](https://www.mouser.com/ProductDetail/JST-Commercial/SHR-04V-S-B)
 - [OpenIMU MiniLogger top-cover reference](https://github.com/introlab/OpenIMU-MiniLogger/blob/master/Hardware/Solidworks/Top%20Cover.STL)
