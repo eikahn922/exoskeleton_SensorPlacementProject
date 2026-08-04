@@ -71,9 +71,9 @@ flowchart LR
 | Iteration | Focus |
 | --- | --- |
 | **Version 1** | Initial compact QT Py, IMU, enclosure, and clamp assembly |
-| **Version 2** | Refined final enclosure and fully validated compact assembly |
+| **Final Version** | Refined, fully validated compact assembly containing 1 QT Py and 1 IMU |
 
-The compact QT Py implementation was selected because it reduced the overall package size while retaining the original mechanical and motion-capture requirements.
+The compact QT Py implementation contains one QT Py and one IMU. It was selected because it reduced the overall package size while retaining the original mechanical and motion-capture requirements.
 
 ## Completion and validation
 
@@ -90,7 +90,7 @@ The repository preserves both validated packages together with the CAD iteration
 
 ## Explore the work
 
-- Start with the [`Final Compact CAN Communications Packaging`](Final%20CAN%20Communications%20Packaging) for the implemented QT Py + IMU architecture and its two CAD versions.
+- Start with the [`Final Compact CAN Communications Packaging`](Final%20CAN%20Communications%20Packaging) for the implemented QT Py + IMU architecture and its initial and final CAD stages.
 - Read the [`QT Py IMU Packaging Specifications`](Final%20CAN%20Communications%20Packaging/Notes%20and%20Specifications/QT%20Py%20IMU%20Packaging%20Specifications.md) for its compact architecture, inherited requirements, and completed validation.
 - Review the [`Original CAN Communication Setup`](Original%20CAN%20Communication%20Setup) for the completed Teensy-based implementation and its full CAD design history.
 
