@@ -16,7 +16,7 @@ The adjustment direction is intentionally described without assigning it to Y or
 
 ## Why both static and adjustable versions are included
 
-The [Static Reference](CAD/01%20Static%20Reference) provides a baseline with no translation adjustment. The [Final Adjustable Mount](CAD/05%20Final%20Adjustable%20Mount) represents the final adjustable CAD iteration.
+The [Static Version](CAD/Static%20Version) is a completed alternative configuration with no translation adjustment. The [Final Version](CAD/Final%20Version) is the completed adjustable configuration.
 
 Both are preserved because it is not yet established that translational adjustment provides enough benefit at the pelvis to justify the additional mechanism. Comparative fitting and gait testing will determine whether it materially improves placement and alignment repeatability.
 
@@ -24,5 +24,5 @@ Both are preserved because it is not yet established that translational adjustme
 
 - [CAD guide and design history](CAD)
 - [Pelvis IMU Mounting Design Notes](Notes%20and%20Specifications/Pelvis%20IMU%20Mounting%20Design%20Notes.md)
-- [OPEN THIS FIRST – Final Adjustable Pelvis IMU Mount](CAD/05%20Final%20Adjustable%20Mount/OPEN%20THIS%20FIRST%20-%20Final%20Adjustable%20Pelvis%20IMU%20Mount)
-- [OPEN THIS FIRST – Full Exoskeleton Integration Context](CAD/06%20Full%20Exoskeleton%20Integration%20Context/OPEN%20THIS%20FIRST%20-%20Full%20Exoskeleton%20Integration%20Context)
+- [OPEN THIS FIRST – Final Version](CAD/Final%20Version/OPEN%20THIS%20FIRST%20-%20Final%20Version)
+- [OPEN THIS FIRST – Full Assembly](CAD/Full%20Assembly/OPEN%20THIS%20FIRST%20-%20Full%20Assembly)

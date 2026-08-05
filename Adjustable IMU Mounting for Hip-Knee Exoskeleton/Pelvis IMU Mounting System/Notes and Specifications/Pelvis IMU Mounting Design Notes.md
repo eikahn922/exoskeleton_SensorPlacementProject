@@ -39,13 +39,13 @@ In this repository, the degree of freedom is described as **translation along th
 
 ## Static and adjustable configurations
 
-### Static Reference
+### Static Version
 
-The static back-plate mount is retained as the experimental baseline. It provides a simpler fixed attachment without translational adjustment.
+The static back-plate mount is retained as a completed alternative final configuration. It provides a simpler fixed attachment without translational adjustment and serves as the experimental comparison baseline.
 
-### Adjustable Mount
+### Adjustable iterations and Final Version
 
-The adjustable design adds controlled translation along the mounting structure. Iterations 2–4 record development of the slider, holder, locking hardware, and integrated electronics arrangement. **ASM #5 is labeled Final Adjustable Mount** and represents the final adjustable CAD iteration.
+The adjustable design adds controlled translation along the mounting structure. Iterations 1–3 record development of the slider, holder, locking hardware, and integrated electronics arrangement. **Source ASM #5 is labeled Final Version** and represents the completed adjustable configuration.
 
 Both configurations remain in the repository because the pelvis-specific benefit of translation has not yet been established. The static version may be preferable if the adjustment does not materially improve repeatability.
 
@@ -53,12 +53,12 @@ Both configurations remain in the repository because the pelvis-specific benefit
 
 | Stage | Main assembly | Design role |
 | --- | --- | --- |
-| 01 Static Reference | OPEN - Static Pelvis IMU Mount.SLDASM | Fixed baseline for comparison |
-| 02 Adjustable Mount – Iteration 2 | OPEN - Adjustable Pelvis IMU Mount - Iteration 2.SLDASM | First supplied slider-based assembly |
-| 03 Adjustable Mount – Iteration 3 | OPEN - Adjustable Pelvis IMU Mount - Iteration 3.SLDASM | Refined holder and adjustment hardware |
-| 04 Adjustable Mount – Iteration 4 | OPEN - Adjustable Pelvis IMU Mount - Iteration 4.SLDASM | Further mechanism and system integration |
-| 05 Final Adjustable Mount | OPEN - Final Adjustable Pelvis IMU Mount.SLDASM | Final adjustable CAD baseline |
-| 06 Full Exoskeleton Integration Context | OPEN - Full Exoskeleton Integration Context.SLDASM | Context for placement on the larger hip exoskeleton |
+| Static Version | OPEN - Pelvis IMU Mount - Static Version.SLDASM | Fixed alternative final configuration and comparison baseline |
+| Iteration 1 | OPEN - Pelvis IMU Mount - Iteration 1.SLDASM | First supplied slider-based assembly |
+| Iteration 2 | OPEN - Pelvis IMU Mount - Iteration 2.SLDASM | Refined holder and adjustment hardware |
+| Iteration 3 | OPEN - Pelvis IMU Mount - Iteration 3.SLDASM | Further mechanism and system integration |
+| Final Version | OPEN - Pelvis IMU Mount - Final Version.SLDASM | Final adjustable configuration |
+| Full Assembly | OPEN - Pelvis IMU Mount - Full Assembly.SLDASM | Placement within the larger hip exoskeleton |
 
 The adjustable stages include the compact QT Py electronics package as a smaller nested assembly. That nested assembly keeps its original filename and is stored with its supporting parts in Assembly Components.
 

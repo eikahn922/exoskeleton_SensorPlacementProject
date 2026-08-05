@@ -19,6 +19,6 @@ These are design goals. The effect on model performance will be evaluated experi
 
 | Subsystem | Scope | Status |
 | --- | --- | --- |
-| [Pelvis IMU Mounting System](Pelvis%20IMU%20Mounting%20System) | Static reference, adjustable design history, final adjustable CAD, and full-system context | Final CAD iteration complete; static-versus-adjustable comparison planned |
+| [Pelvis IMU Mounting System](Pelvis%20IMU%20Mounting%20System) | Static Version, Iterations 1–3, Final Version, and Full Assembly | Final CAD complete; static-versus-adjustable comparison planned |
 
 The distributed electronics packages elsewhere in this repository support the same system by placing computing near the sensors and actuators, reducing long cable runs and wiring complexity.
