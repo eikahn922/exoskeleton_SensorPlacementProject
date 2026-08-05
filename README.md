@@ -66,12 +66,12 @@ The pelvis subsystem retains a fixed reference design and a sequence of adjustab
 
 | CAD stage | Purpose | Status |
 | --- | --- | --- |
-| **01 Static Reference** | Fixed back-plate IMU mount used as the comparison baseline | Reference configuration |
-| **02 Adjustable Mount – Iteration 2** | Introduces the sliding mount concept | Design iteration |
-| **03 Adjustable Mount – Iteration 3** | Refines the holder and adjustment hardware | Design iteration |
-| **04 Adjustable Mount – Iteration 4** | Further integrates the adjustment mechanism and system hardware | Design iteration |
-| **05 Final Adjustable Mount** | Final adjustable pelvis-mount CAD iteration | Final CAD baseline |
-| **06 Full Exoskeleton Integration Context** | Shows the electronics package in the larger hip-exoskeleton assembly | Integration context |
+| **Static Version** | Fixed back-plate alternative to the adjustable final design | Alternative final configuration |
+| **Iteration 1** | Introduces the sliding mount concept | Design iteration |
+| **Iteration 2** | Refines the holder and adjustment hardware | Design iteration |
+| **Iteration 3** | Further integrates the adjustment mechanism and system hardware | Design iteration |
+| **Final Version** | Final adjustable pelvis-mount CAD | Final adjustable configuration |
+| **Full Assembly** | Shows the pelvis package in the larger hip exoskeleton | System-level assembly |
 
 Both the static and adjustable versions are intentionally preserved. Testing will determine whether translation at the pelvis materially improves placement repeatability enough to justify the added adjustment mechanism.
 
@@ -147,6 +147,6 @@ The original Teensy-package Drive folders used overlapping design numbers, so th
 | Final | FINAL DESIGN |
 | Experimental – Lid Tests | Lid Test 1 |
 
-The pelvis source archives map to Static Reference, Adjustable Iterations 2–4, Final Adjustable Mount (ASM #5), and Full Exoskeleton Integration Context.
+The pelvis source archives map to Static Version, Iterations 1–3, Final Version (source ASM #5), and Full Assembly.
 
 </details>
