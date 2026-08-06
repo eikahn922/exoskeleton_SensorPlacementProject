@@ -13,13 +13,13 @@ The supporting distributed-computing hardware places electronics closer to the s
 | | |
 | --- | --- |
 | **Primary objective** | Repeatable IMU position and initial orientation across participants |
-| **Current mechanical focus** | Pelvis and shin IMU mounts for a hip-knee exoskeleton |
+| **Current mechanical focus** | Pelvis, thigh, and shin IMU mounts for a hip-knee exoskeleton |
 | **Data objective** | Reduce placement-induced variation in gait measurements |
 | **Algorithm objective** | Support more consistent training data and improved person-to-person model transfer |
 | **Distributed-system objective** | Place computing near devices to reduce long cable runs and simplify routing |
 | **Supporting hardware** | ICM-20948 IMU, Teensy, QT Py SAMD21, CAN Pal, and exoskeleton mounting hardware |
 | **CAD tools** | SolidWorks assemblies and parts organized around one obvious entry assembly per design |
-| **Status** | Two electronics packages are complete and fully validated; the final pelvis CAD iteration is complete; the adjustable shin subsystem remains in development |
+| **Status** | Two electronics packages are complete and fully validated; the final pelvis CAD iteration is complete; the adjustable thigh and shin subsystems remain in development |
 
 ## Why repeatable sensor placement matters
 
@@ -37,7 +37,7 @@ The sensor does not remain globally pointed in one direction throughout gait—t
 
 ## My contribution
 
-- Developed adjustable pelvis and shin mounting concepts, including a static pelvis reference and documented component-level design iterations.
+- Developed adjustable pelvis, thigh, and shin mounting concepts, including a static pelvis reference and documented component-level design iterations.
 - Added controlled translation along the pelvis mounting structure while maintaining sensor support and orientation.
 - Preserved both static and adjustable configurations so the value of pelvis translation can be tested rather than assumed.
 - Integrated the compact QT Py and IMU package into the adjustable-mount assemblies.
@@ -49,7 +49,7 @@ The sensor does not remain globally pointed in one direction throughout gait—t
 
 ~~~mermaid
 flowchart LR
-    Fit["Participant-specific fitting"] --> Mount["Adjustable pelvis and shin IMU mounts"]
+    Fit["Participant-specific fitting"] --> Mount["Adjustable pelvis, thigh, and shin IMU mounts"]
     Mount --> Alignment["Comparable relative position and initial orientation"]
     Alignment --> Data["More consistent gait data"]
     Data --> Transfer["Improved cross-person model transfer — design goal"]
@@ -76,6 +76,14 @@ The pelvis subsystem retains a fixed reference design and a sequence of adjustab
 Both the static and adjustable versions are intentionally preserved. Testing will determine whether translation at the pelvis materially improves placement repeatability enough to justify the added adjustment mechanism.
 
 [Explore the pelvis IMU mounting system](Adjustable%20IMU%20Mounting%20for%20Hip-Knee%20Exoskeleton/Pelvis%20IMU%20Mounting%20System)
+
+## Thigh IMU positioning — work in progress
+
+The thigh subsystem uses a movable strap-routing attachment captured within an opening in the thigh cuff. The attachment can move up/down and side-to-side for fitting. The retention strap threads through it and then wraps around the thigh/cuff, while bolts entering from the opposite side bound vertical travel so the attachment cannot migrate beyond the intended adjustment region.
+
+The mechanism is intended to combine participant-specific adjustment with a repeatable, mechanically bounded strap path. Retention, comfort, slip resistance, placement repeatability, and the resulting data benefit still require experimental validation.
+
+[Explore the thigh IMU mounting system](Adjustable%20IMU%20Mounting%20for%20Hip-Knee%20Exoskeleton/Thigh%20IMU%20Mounting%20System)
 
 ## Shin IMU positioning — work in progress
 
@@ -142,9 +150,20 @@ The final adjustable CAD iteration is complete. Comparative testing remains for 
 - determine whether the added translation meaningfully reduces setup variation;
 - evaluate whether the resulting data improves cross-participant algorithm transfer.
 
+### Thigh and shin positioning subsystems
+
+The current thigh and shin CAD concepts remain in development. Planned checks include:
+
+- verify usable adjustment ranges across the intended participant population;
+- measure repeated-fit position and initial-orientation consistency;
+- test strap retention, bounded travel, and resistance to slip during gait;
+- confirm participant comfort and exoskeleton clearance;
+- evaluate whether improved placement consistency reduces setup-driven signal variation.
+
 ## Repository map
 
 - [Adjustable IMU Mounting for Hip-Knee Exoskeleton](Adjustable%20IMU%20Mounting%20for%20Hip-Knee%20Exoskeleton) — primary sensor-placement project and pelvis CAD history.
+- [Thigh IMU Mounting System](Adjustable%20IMU%20Mounting%20for%20Hip-Knee%20Exoskeleton/Thigh%20IMU%20Mounting%20System) — in-progress strap-adjustable thigh-cuff IMU positioning with bounded travel.
 - [Shin IMU Mounting System](Adjustable%20IMU%20Mounting%20for%20Hip-Knee%20Exoskeleton/Shin%20IMU%20Mounting%20System) — in-progress adjustable shin sensor placement, full knee-exoskeleton context, and component iterations.
 - [Final CAN Communications Packaging](Final%20CAN%20Communications%20Packaging) — compact, fully validated one-QT-Py/one-IMU package.
 - [Original CAN Communication Setup](Original%20CAN%20Communication%20Setup) — original, fully validated Teensy-based package and its design history.
