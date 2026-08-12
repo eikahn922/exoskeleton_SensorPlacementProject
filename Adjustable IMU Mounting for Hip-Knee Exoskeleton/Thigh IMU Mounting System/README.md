@@ -2,7 +2,7 @@
 
 **Status: work in progress**
 
-This subsystem develops an adjustable strap-mounted IMU interface for the thigh cuff of the hip-knee exoskeleton. The mechanism is intended to let the sensor attachment move up or down and side-to-side within the cuff opening so the IMU can be fitted at a more comparable relative position across participants.
+This subsystem develops an adjustable strap-mounted IMU interface for the thigh cuff of the hip-knee exoskeleton. The mechanism is intended to let the sensor attachment move up or down and side-to-side within the cuff opening so the IMU can be fitted at a more comparable relative position across participants. Version 2 adds a dedicated strap-retention component and an updated cuff while preserving the original assembly dependencies.
 
 ## Mechanical concept
 
@@ -16,7 +16,8 @@ This adjustable strap path is meant to combine repeatable IMU placement with a p
 ## Start here
 
 - [CAD guide](CAD)
-- [OPEN THIS FIRST – Strap-Adjustable Thigh IMU Cuff](CAD/Current%20Strap-Adjustable%20Thigh%20Cuff/OPEN%20THIS%20FIRST%20-%20Strap-Adjustable%20Thigh%20IMU%20Cuff)
+- [OPEN THIS FIRST – Thigh IMU Cuff, Version 2](CAD/Version%202%20-%20Strap-Retained%20Thigh%20Cuff/OPEN%20THIS%20FIRST%20-%20Thigh%20IMU%20Cuff%20-%20Version%202)
+- [Version 1 – Strap-Adjustable Thigh Cuff](CAD/Version%201%20-%20Strap-Adjustable%20Thigh%20Cuff)
 - [Thigh IMU Mounting Design Notes](Notes%20and%20Specifications/Thigh%20IMU%20Mounting%20Design%20Notes.md)
 
 ## Current development questions
