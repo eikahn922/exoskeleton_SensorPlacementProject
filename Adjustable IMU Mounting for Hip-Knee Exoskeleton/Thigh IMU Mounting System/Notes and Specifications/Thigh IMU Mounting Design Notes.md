@@ -2,7 +2,7 @@
 
 ## Project status
 
-This thigh subsystem is **still in development**. The CAD documents the current strap-adjustable mounting concept; it should not be presented as a fully validated final design.
+This thigh subsystem is **still in development**. The CAD documents two strap-adjustable mounting revisions; it should not be presented as a fully validated final design. Version 2 is the latest revision.
 
 ## Functional objective
 
@@ -37,6 +37,13 @@ The target outcome is reduced setup-dependent variation in gait signals. More co
 - Support repeatable donning, adjustment, tightening, and removal.
 - Remain lightweight, printable, and serviceable.
 
+## Revision history
+
+| Revision | Change |
+| --- | --- |
+| Version 1 | Original strap-adjustable thigh cuff with five supporting parts. |
+| Version 2 | Updated the thigh cuff and added a dedicated strap-retention/pushdown part while carrying forward four unchanged assembly dependencies. |
+
 ## Planned validation
 
 - Measure the usable vertical and side-to-side adjustment ranges.
@@ -51,6 +58,6 @@ The target outcome is reduced setup-dependent variation in gait signals. More co
 
 ## CAD source and handling
 
-The supplied archive contains six files: one top-level assembly and five parts. The assembly was renamed to **OPEN - Strap-Adjustable Thigh IMU Cuff.SLDASM** for recruiter navigation; its bytes are otherwise unchanged. Supporting filenames remain unchanged in **Assembly Components**.
+Version 1 contains one top-level assembly and five parts. Version 2 contains one updated top-level assembly and six parts: four unchanged Version 1 dependencies, the updated cuff, and the new strap-retention part. The Version 2 assembly is renamed to **OPEN - Thigh IMU Cuff - Version 2.SLDASM** for recruiter navigation; supporting filenames remain unchanged in **Assembly Components**.
 
 If SolidWorks requests a reference relink, select only the matching parts from this design's own **Assembly Components** folder.
